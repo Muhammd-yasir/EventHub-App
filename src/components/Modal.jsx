@@ -3,37 +3,19 @@ const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   const handleContentClick = (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); 
   };
 
   return (
-    // Background overlay
     <div
       onClick={onClose} 
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0,0,0,0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 1000,
-      }}
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4"
     >
       <div
-        onClick={handleContentClick} 
-        style={{
-          backgroundColor: "white",
-          padding: "20px",
-          borderRadius: "8px",
-          minWidth: "300px",
-        }}
+        onClick={handleContentClick}
+        className="bg-white rounded-xl w-full max-w-lg p-6 sm:p-8 shadow-lg relative"
       >
         {children}
-        
       </div>
     </div>
   );

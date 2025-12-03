@@ -2,22 +2,22 @@ const DashboardStats = ({ total, upcoming, past }) => {
 
     return (
         <>
-            <div className="dash-stats-container">
-                <div>
-                    <h3>Total Events</h3>
-                    <p>{total}</p>
-                </div>
-
-                <div>
-                    <h3>Upcoming Events</h3>
-                    <p>{upcoming}</p>
-                </div>
-
-                <div>
-                    <h3>Past Events</h3>
-                    <p>{past}</p>
-                </div>
-            </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-white p-6 rounded-lg shadow text-center">
+                    <h2 className="text-xl font-semibold text-gray-700 mb-2">Total Events</h2>
+                    <p className="text-3xl font-bold text-gray-900">{total}</p>
+                  </div>
+          
+                  <div className="bg-white p-6 rounded-lg shadow text-center">
+                    <h2 className="text-xl font-semibold text-gray-700 mb-2">Upcoming Events</h2>
+                    <p className="text-3xl font-bold text-gray-900">{upcoming}</p>
+                  </div>
+          
+                  <div className="bg-white p-6 rounded-lg shadow text-center">
+                    <h2 className="text-xl font-semibold text-gray-700 mb-2">Past Events</h2>
+                    <p className="text-3xl font-bold text-gray-900">{past}</p>
+                  </div>
+                </div>   
         </>
     )
 }
