@@ -20,32 +20,35 @@ EventHub is a **React.js based Event Management application** that allows users 
 
 /EventHub
 ├─ /public
-│ └─ index.html, favicon, static images
+│  ├─ index.html
+│  ├─ favicon
+│  └─ static images
 ├─ /src
-│ ├─ /assets ← images, icons
-│ ├─ /components ← reusable UI components
-│ │ ├─ Header.jsx
-│ │ ├─ Footer.jsx
-│ │ ├─ Sidebar.jsx
-│ │ ├─ Modal.jsx
-│ │ ├─ EventCard.jsx
-│ │ ├─ EventForm.jsx
-│ │ ├─ DashboardStats.jsx
-│ │ └─ ThemeToggle.jsx
-│ ├─ /pages ← main page components
-│ │ ├─ Dashboard.jsx
-│ │ ├─ EventList.jsx
-│ │ ├─ CalendarView.jsx
-│ │ ├─ Profile.jsx
-│ │ └─ NotFound.jsx
-│ ├─ /context ← global state
-│ │ ├─ EventContext.jsx
-│ │ └─ ThemeContext.jsx
-│ ├─ /utils ← helper functions
-│ │ └─ localStorageHelpers.jsx
-│ ├─ App.jsx
-│ ├─ index.jsx
-│ └─ routes.jsx
+│  ├─ /assets       ← images, icons
+│  ├─ /components   ← reusable UI components
+│  │   ├─ Header.jsx
+│  │   ├─ Footer.jsx
+│  │   ├─ Sidebar.jsx
+│  │   ├─ Modal.jsx
+│  │   ├─ EventCard.jsx
+│  │   ├─ EventForm.jsx
+│  │   ├─ DashboardStats.jsx
+│  │   └─ ThemeToggle.jsx
+│  ├─ /pages        ← main page components
+│  │   ├─ Dashboard.jsx
+│  │   ├─ EventList.jsx
+│  │   ├─ CalendarView.jsx
+│  │   ├─ Profile.jsx
+│  │   └─ NotFound.jsx
+│  ├─ /context      ← global state
+│  │   ├─ EventContext.jsx
+│  │   └─ ThemeContext.jsx
+│  ├─ /utils        ← helper functions
+│  │   └─ localStorageHelpers.jsx
+│  ├─ App.jsx
+│  ├─ index.jsx
+│  └─ routes.jsx
+
 
 ## **Technologies Used**
 
