@@ -17,7 +17,7 @@ EventHub is a **React.js based Event Management application** that allows users 
 
 ## **Folder Structure**
 
-
+```text
 /EventHub
 ├─ /public
 │  ├─ index.html
