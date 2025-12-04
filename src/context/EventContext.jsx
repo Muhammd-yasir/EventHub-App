@@ -1,51 +1,107 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { getEvents, saveEvents } from '../utils/localStorageHelpers';
 
-//  Create Context
 export const EventContext = createContext();
 
-//  Provider Component
-export const EventProvider = ({ children }) => {
-    const [events, setEvents] = useState([]);
+export function EventProvider({ children }) {
+  const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
-    // Load events from localStorage on mount
-    useEffect(() => {
-        const storedEvents = localStorage.getItem("events");
-        if (storedEvents) {
-            setEvents(JSON.parse(storedEvents));
-        }
-    }, []);
+  // Load events from localStorage on initial render
+  useEffect(() => {
+    const loadedEvents = getEvents();
+    setEvents(loadedEvents);
+  }, []);
 
-    // Save events to localStorage whenever events change
-    useEffect(() => {
-        localStorage.setItem("events", JSON.stringify(events));
-    }, [events]);
+  // Save events to localStorage whenever they change
+  useEffect(() => {
+    saveEvents(events);
+  }, [events]);
 
-    // Add new event
-    const addEvent = (newEvent) => {
-        setEvents((prev) => [...prev, newEvent]);
+  const addEvent = (newEvent) => {
+    const eventWithId = {
+      ...newEvent,
+      id: Date.now().toString(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     };
+    setEvents([...events, eventWithId]);
+    return eventWithId;
+  };
 
-    // Update event by id
-    const updateEvent = (id, updatedEvent) => {
-        setEvents((prev) =>
-            prev.map((event) => (event.id === id ? updatedEvent : event))
-        );
+  const deleteEvent = (id) => {
+    setEvents(events.filter(event => event.id !== id));
+  };
+
+  const updateEvent = (id, updatedEvent) => {
+    const eventWithUpdate = {
+      ...updatedEvent,
+      updatedAt: new Date().toISOString()
     };
+    
+    setEvents(events.map(event => 
+      event.id === id ? { ...event, ...eventWithUpdate } : event
+    ));
+  };
 
-    // Delete event by id
-    const deleteEvent = (id) => {
-        setEvents((prev) => prev.filter((event) => event.id !== id));
-    };
+  const getEventById = (id) => {
+    return events.find(event => event.id === id);
+  };
 
-    // Context value
-    const value = {
-        events,
-        addEvent,
-        updateEvent,
-        deleteEvent,
-    };
+  const getUpcomingEvents = () => {
+    const now = new Date();
+    return events
+      .filter(event => new Date(event.date) >= now)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+  };
 
-    return (
-        <EventContext.Provider value={value}>{children}</EventContext.Provider>
+  const getPastEvents = () => {
+    const now = new Date();
+    return events
+      .filter(event => new Date(event.date) < now)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  };
+
+  const getStats = () => {
+    const now = new Date();
+    const upcoming = events.filter(event => new Date(event.date) >= now).length;
+    const past = events.filter(event => new Date(event.date) < now).length;
+    const total = events.length;
+    
+    let attendees = 0;
+    events.forEach(event => {
+      if (event.attendees) {
+        attendees += parseInt(event.attendees) || 0;
+      }
+    });
+
+    return { total, upcoming, past, attendees };
+  };
+
+  const searchEvents = (query) => {
+    const searchTerm = query.toLowerCase();
+    return events.filter(event => 
+      event.title.toLowerCase().includes(searchTerm) ||
+      event.description.toLowerCase().includes(searchTerm) ||
+      event.location.toLowerCase().includes(searchTerm)
     );
-};
+  };
+
+  return (
+    <EventContext.Provider value={{
+      events,
+      selectedEvent,
+      setSelectedEvent,
+      addEvent,
+      deleteEvent,
+      updateEvent,
+      getEventById,
+      getUpcomingEvents,
+      getPastEvents,
+      getStats,
+      searchEvents
+    }}>
+      {children}
+    </EventContext.Provider>
+  );
+}
