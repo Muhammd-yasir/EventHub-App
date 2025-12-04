@@ -20,7 +20,7 @@ export default function EventList() {
             <EventCard 
               key={event.id} 
               event={event}
-              onEdit={() => {}} // You can add edit functionality later
+              onEdit={() => {}} // You can add edit functionality 
             />
           ))}
         </div>
