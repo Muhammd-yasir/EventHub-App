@@ -1,9 +1,9 @@
 export default function CalendarView() {
     return (
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Calendar View</h1>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+      <div className="md:p-6 p-2">
+        <div className="flex flex-col md:flex-row space-y-5 md:space-y-1 justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-800 mb-3">Calendar View</h1>
+          <button className="bg-blue-600 text-white md:p-3 p-2 rounded-lg hover:bg-blue-700 transition">
             Add to Calendar
           </button>
         </div>

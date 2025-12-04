@@ -6,9 +6,9 @@ export default function EventList() {
   const { events } = useContext(EventContext);
 
   return (
-    <div className="p-6">
+    <div className="md:p-6">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">All Events</h1>
+        <h1 className="md:text-3xl text-xl font-bold text-gray-800">All Events</h1>
         <div className="text-gray-600">
           {events.length} event{events.length !== 1 ? 's' : ''} total
         </div>
@@ -30,12 +30,12 @@ export default function EventList() {
           <h3 className="text-xl font-semibold text-gray-700 mb-2">
             No Events Found
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-500 animate-pulse mb-6">
             You haven't created any events yet.
           </p>
           <a 
             href="/" 
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            className="inline-block bg-blue-600 text-white px-3 py-2 md:px-6 md:py-3 rounded-lg hover:bg-blue-700 transition"
           >
             Create Your First Event
           </a>
