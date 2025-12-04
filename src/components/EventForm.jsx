@@ -29,7 +29,7 @@ const EventForm = ({ onClose }) => {
       onSubmit={handleSubmit}
       className="bg-white p-6 sm:p-8 md:p-10 rounded shadow-lg w-full max-w-md mx-auto relative"
     >
-      {/* Close Button */}
+     
       <button
         type="button"
         onClick={onClose}
@@ -42,7 +42,7 @@ const EventForm = ({ onClose }) => {
         Create New Event
       </h2>
 
-      {/* Title */}
+      
       <div className="mb-5">
         <label className="block text-gray-700 mb-2 font-medium">Title:</label>
         <input
@@ -53,7 +53,7 @@ const EventForm = ({ onClose }) => {
         />
       </div>
 
-      {/* Date */}
+ 
       <div className="mb-5">
         <label className="block text-gray-700 mb-2 font-medium">Date:</label>
         <input
@@ -64,7 +64,7 @@ const EventForm = ({ onClose }) => {
         />
       </div>
 
-      {/* Description */}
+      
       <div className="mb-6">
         <label className="block text-gray-700 mb-2 font-medium">Description:</label>
         <textarea
@@ -75,7 +75,7 @@ const EventForm = ({ onClose }) => {
         />
       </div>
 
-      {/* Buttons */}
+      
       <div className="flex flex-col sm:flex-row justify-end gap-3">
         <button
           type="button"

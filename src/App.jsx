@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      {/* Remove all padding/margin from this div */}
       <div className="flex flex-1">
         <Sidebar />
         <main className="flex-1 p-6">
